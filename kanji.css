@@ -1,0 +1,63 @@
+body{
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-app{
+    display: flex;
+    width: 60vw;
+    height: 90vh;
+    border: 1px solid black;
+    flex-direction: column;
+    position: relative;
+}
+
+.top{
+    background-color: rgb(200, 130, 120);
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    align-items: center;
+}
+
+.sidebar{
+    background-color: rgb(200, 230, 255);
+    width: 20%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2%;
+    
+}
+
+.display{
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    right: 0px;
+    top: 20%;
+}
+
+.bottom{
+    background-color: rgb(200, 130, 120);
+    width: 80%;
+    height: 20%;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+button{
+    width: 120px;
+    height: 40px;
+}
