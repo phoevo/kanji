@@ -42,6 +42,27 @@ body{
     position: absolute;
     right: 0px;
     top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#progress{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+#kanji{
+    font-size: 7em;
+}
+#reading{
+    font-size:3em;
+}
+
+#translation{
+    font-size: 3em;
 }
 
 .bottom{
@@ -60,4 +81,8 @@ body{
 button{
     width: 120px;
     height: 40px;
+}
+
+#easy, #medium, #hard{
+    width: 70px;
 }
