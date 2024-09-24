@@ -3,5 +3,9 @@ let n5reading = ["いち", "に", "さん", "し・よん", "ご", "ろく", "�
 let n5translation = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
 
 let n4kanji =["家", "族", "兄", "弟"];
-let n4reading = ["いえ・や", "ぞく", "あに", "おとうと"];
-let n4translation = ["House, place", "tribe, family", "Older brother", "younger brother"];
+let n4reading = ["いえ・や・か", "ぞく", "あに", "おとうと"];
+let n4translation = ["House, place", "tribe, family", "Older brother", "Younger brother"];
+
+let libraryKanji = [];
+let libraryReading = [];
+let libraryTranslation = [];
