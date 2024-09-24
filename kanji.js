@@ -21,7 +21,10 @@ function selectList(){
         index = 0;
         nextBtn.disabled = false;
         establishLocation(n5kanji, n5reading, n5translation);
-/*
+        progressNum();
+        /*
+        establishLocation function gets rid of the code below that that existed
+        for the n5/n4LevelBtns and for the library. Too repetitive.(the irony i know..)
         currentKanji = n5kanji;
         currentReading = n5reading;
         currentTranslation = n5translation;
@@ -30,22 +33,15 @@ function selectList(){
         translationDisplay.innerHTML = n5translation[index];
         */
 
-        progressNum();
-        console.log(currentKanji);
+        
        
     })
 
     n4LevelBtn.addEventListener("click", function(){
         index = 0;
         nextBtn.disabled = false;
-        currentKanji = n4kanji;
-        currentReading = n4reading;
-        currentTranslation = n4translation;
-        kanjiDisplay.innerHTML = n4kanji[index];
-        readingDisplay.innerHTML = n4reading[index];
-        translationDisplay.innerHTML = n4translation[index];
-        progressNum();
-       
+        establishLocation(n4kanji, n4reading, n4translation);
+        progressNum();  
     })   
 }
 
@@ -117,14 +113,9 @@ let library = document.querySelector("#library");
     library.addEventListener("click", function(){
     index = 0;
     nextBtn.disabled = false;
-    currentKanji = libraryKanji;
-    currentReading = libraryReading;
-    currentTranslation = libraryTranslation;
-    kanjiDisplay.innerHTML = libraryKanji[index];
-    readingDisplay.innerHTML = libraryReading[index];
-    translationDisplay.innerHTML = libraryTranslation[index];
+    establishLocation(libraryKanji, libraryReading, libraryTranslation);
     progressNum();
-    console.log(currentKanji);
+    
 })
     
 function textNotification(){
@@ -133,7 +124,7 @@ function textNotification(){
         display.appendChild(p);   
         setTimeout(() => {
             p.remove();
-         }, 3000);
+         }, 2000);
     }
      
 
@@ -144,7 +135,6 @@ function establishLocation(a, b, c){
     kanjiDisplay.innerHTML = a[index];
     readingDisplay.innerHTML = b[index];
     translationDisplay.innerHTML = c[index];
-
 }    
 
 
