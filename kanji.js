@@ -1,48 +1,71 @@
-let n5kanji = ["一", "二", "三", "四", "五", "六", "七"];
-let n5reading = ["いち", "に", "さん", "し・よん", "ご", "ろく", "なな・しち"];
-let n5translation = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
-
 let kanjiDisplay = document.querySelector("#kanji");
 let readingDisplay = document.querySelector("#reading");
 let translationDisplay = document.querySelector("#translation");
 let nextBtn = document.querySelector("#next");
 let backBtn = document.querySelector("#back");
 let n5LevelBtn = document.querySelector("#n5Level");
+let n4LevelBtn = document.querySelector("#n4Level");
 let progress = document.querySelector("#progress");
 
+
 let index = 0;
-kanjiDisplay.innerHTML = n5kanji[index];
-readingDisplay.innerHTML = n5reading[index];
-translationDisplay.innerHTML = n5translation[index];
+let currentKanji;
+let currentReading;
+let currentTranslation;
+selectList();
 
-progressNum();
-
-function progressNum(){
-    progress.innerHTML = `Progress: ${index + 1}/${n5kanji.length}`
-
-
-}
-function nextKanji(){
-    if (index < n5kanji.length){
-        index ++;
+function selectList(){
+    n5LevelBtn.addEventListener("click", function(){
+        index = 0;
+        nextBtn.disabled = false;
+        currentKanji = n5kanji;
+        currentReading = n5reading;
+        currentTranslation = n5translation;
         kanjiDisplay.innerHTML = n5kanji[index];
         readingDisplay.innerHTML = n5reading[index];
         translationDisplay.innerHTML = n5translation[index];
-        
+        progressNum();
+    
+    })
+
+    n4LevelBtn.addEventListener("click", function(){
+        index = 0;
+        nextBtn.disabled = false;
+        currentKanji = n4kanji;
+        currentReading = n4reading;
+        currentTranslation = n4translation;
+        kanjiDisplay.innerHTML = n4kanji[index];
+        readingDisplay.innerHTML = n4reading[index];
+        translationDisplay.innerHTML = n4translation[index];
+        progressNum();
        
+    })   
+}
+
+
+
+function progressNum(){
+    progress.innerHTML = `Progress: ${index + 1}/${currentKanji.length}`
+}
+
+
+function nextKanji(){
+    if (index < currentKanji.length){
+        index ++;
+        kanjiDisplay.innerHTML = currentKanji[index];
+        readingDisplay.innerHTML = currentReading[index];
+        translationDisplay.innerHTML = currentTranslation[index];
     }
 }
 
 function previousKanji(){
-    if (index < n5kanji.length){
+    if (index < currentKanji.length){
         index --;
-        kanjiDisplay.innerHTML = n5kanji[index];
-        readingDisplay.innerHTML = n5reading[index];
-        translationDisplay.innerHTML = n5translation[index];
+        kanjiDisplay.innerHTML = currentKanji[index];
+        readingDisplay.innerHTML = currentReading[index];
+        translationDisplay.innerHTML = currentTranslation[index];
     }
 }
-
-
 
 nextBtn.addEventListener("click", function(){
     nextKanji();
@@ -55,14 +78,14 @@ backBtn.addEventListener("click", function(){
     previousKanji();
     checkListLocation();
     progressNum();
-
+    
 })
 
 function checkListLocation(){
     if (index === 0){
         backBtn.disabled = true;
     }
-    else if (index === n5kanji.length - 1){
+    else if (index === currentKanji.length - 1){
         nextBtn.disabled = true;
     }
     else{ 
