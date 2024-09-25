@@ -22,6 +22,7 @@ function selectList(){
         nextBtn.disabled = false;
         establishLocation(n5kanji, n5reading, n5translation);
         progressNum();
+        flipRemove();
         /*
         establishLocation function gets rid of the code below that that existed
         for the n5/n4LevelBtns and for the library. Too repetitive.(the irony i know..)
@@ -42,6 +43,7 @@ function selectList(){
         nextBtn.disabled = false;
         establishLocation(n4kanji, n4reading, n4translation);
         progressNum();  
+        flipRemove();
     })   
 }
 
@@ -104,9 +106,10 @@ addLibraryBtn.addEventListener("click", function(){
     libraryKanji.push(currentKanji[index]);
     libraryReading.push(currentReading[index]);
     libraryTranslation.push(currentTranslation[index]);
+
     console.log(`Library has a length of ${libraryKanji.length}`);
     console.log(libraryKanji);
-    textNotification();
+    textNotification(`Added to library`);
 })
 
 let library = document.querySelector("#library");
@@ -114,17 +117,18 @@ let library = document.querySelector("#library");
     index = 0;
     nextBtn.disabled = false;
     establishLocation(libraryKanji, libraryReading, libraryTranslation);
-    progressNum();
-    
+    progressNum();  
+    flipRemove();
+        
 })
     
-function textNotification(){
+function textNotification(text){
     const p = document.createElement('p')
-        p.innerText = `Added to library`;
+        p.innerText = `${text}`;
         display.appendChild(p);   
         setTimeout(() => {
             p.remove();
-         }, 2000);
+         }, 1000);
     }
      
 
@@ -137,9 +141,47 @@ function establishLocation(a, b, c){
     translationDisplay.innerHTML = c[index];
 }    
 
+addFlashcardsBtn.addEventListener("click", function(){
+    flashcardsKanji.push(currentKanji[index]);
+    flashcardsReading.push(currentReading[index]);
+    flashcardsTranslation.push(currentTranslation[index]);
+    
+
+    console.log(`Flashcards has a length of ${flashcardsKanji.length}`);
+    console.log(flashcardsKanji);
+    textNotification(`Added to flashcards`);
+})
+let flashcards = document.querySelector("#flashcards");
+    flashcards.addEventListener("click", function(){
+    index = 0;
+    nextBtn.disabled = false;
+    establishLocation(flashcardsKanji, flashcardsReading, flashcardsTranslation);
+    progressNum(); 
+    createFlipButton();  
+})
+
+let flipBtn = document.createElement("button");
+
+function createFlipButton(){
+        flipBtn.setAttribute("id", "flipBtn");
+        flipBtn.innerHTML = "Flip";
+        display.appendChild(flipBtn);
+}
+
+flipBtn.addEventListener("click", function(){
+    
+})
+       
+function flipRemove(){
+    flipBtn.remove();
+}
 
 
 
+
+
+            
+   
 
 
 
